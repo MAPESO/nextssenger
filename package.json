@@ -1,0 +1,53 @@
+{
+  "name": "auth-chat",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": {
+    "name": "Markoz Peña Mendez",
+    "email": "markdrew53@gmail.com",
+    "twitter": "@markdrew53"
+  },
+  "license": "MIT",
+  "private": false,
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVerion": 9,
+      "sourceType": "module"
+    },
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:prettier/recommended"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "no-shadow": 0,
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "cookie-session": "2.0.0-beta.3",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "now-env": "^3.1.0",
+    "prettier": "^1.15.2"
+  },
+  "scripts": {
+    "start": "node ."
+  }
+}

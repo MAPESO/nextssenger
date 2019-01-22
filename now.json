@@ -1,18 +1,21 @@
-
 {
-    "alias": "auth-chat.now.sh",
     "version": 2,
-    "name": "auth-chat",
     "public": true,
+    "alias": "auth-chat",
     "builds": [
-        {"src": "index.js", "use": "@now/node-server"}
+        {"src": "index.js", "use": "@now/node"},
+        {"src": "auth.js", "use": "@now/node"},
+        {"src": "cb.js", "use": "@now/node"}
     ],
     "routes": [
-        {"src": "/.*", "dest": "index.js"}
+        {"src": "/auth/google", "dest": "auth.js"},
+        {"src": "/auth/google/callback", "dest": "cb.js"}
     ],
     "env": {
         "GOOGLE_ID": "@google_id",
         "GOOGLE_SECRET": "@google_secret",
-        "SESSION_SECRET": "@session_secret"
+        "KEY_1": "@key_1",
+        "KEY_2": "@key_2",
+        "URL_CALLBACK": "@url_callback"
     }
 }

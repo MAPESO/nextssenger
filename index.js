@@ -1,77 +1,34 @@
-/* eslint no-console: 0 */
-// Packages
-const express = require('express');
-const cookieSession = require('cookie-session');
-const passport = require('passport');
+// Middleware
+const withSession = require('./lib/middleware/session');
 
-require('now-env');
-require('./passport_config/passport')(passport);
-
-const app = express();
-const port = process.env.PORT || 8000;
-
-// middleware necessary to save the persistent session
-app.use(
-  cookieSession({
-    keys: [process.env.SESSION_SECRET],
-    maxAge: 24 * 60 * 60 * 1000
-  })
-);
-
-// middleware that are necessary for passport
-app.use(passport.initialize());
-app.use(passport.session());
-
-const getUser = req => {
-  const user = req.user;
+const existingUser = req => {
+  const user = req.session.user;
   if (user) {
     return user;
   }
   return null;
 };
 
-app.get('/', (req, res) => {
-  const username = getUser(req);
-  if (username) {
-    res.send(`
-      <header style="text-align: center; font-family: sans-serif;">
-        <p>🎉 Welcome back, <b>${username.displayName}</b></p>
-        <a href="logout">Log Out</a>
-      </header>
-    `);
-    res.end();
-  } else {
-    res.send(`
+module.exports = withSession((req, res) => {
+  const user = existingUser(req);
+  if (user) {
+    const {
+      displayName,
+      image: { url }
+    } = JSON.parse(user);
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(`
     <header style="text-align: center; font-family: sans-serif;">
-        <p>💩 <b>You are not logged in.</b></p>
-        <p><a href="/auth/google">Log in with Google</a></p>
+      <img src=${url} alt=${displayName} width=${100} height=${100}>
+      <p>🎉Welcome back, <b>${displayName}</b>!!</p>
     </header>
     `);
-    res.end();
+  } else {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(`
+    <header style="text-align: center; font-family: sans-serif;">
+        <p>💩 <b>You are not logged in.</b></p>
+        <p><a href="/auth/google">Log in with Google :)</a></p>
+    </header>`);
   }
-});
-
-app.get(
-  '/auth/google',
-  passport.authenticate('google', {
-    scope: ['https://www.googleapis.com/auth/plus.login']
-  })
-);
-
-app.get(
-  '/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  (req, res) => {
-    res.redirect('/');
-  }
-);
-
-app.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect('/');
-});
-
-app.listen(port, err => {
-  if (err) throw err;
-  console.log(`𝚫 Ready On Server http://localhost:${port}`);
 });

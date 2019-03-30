@@ -1,21 +1,14 @@
 {
     "version": 2,
     "public": true,
-    "alias": "chat-auth",
     "builds": [
         {"src": "index.js", "use": "@now/node"},
-        {"src": "api/**/*.js", "use":"@now/node"}
+        {"src": "routes/**/*.js", "use":"@now/node"}
     ],
     "routes": [
-        {"src": "/auth/google", "dest": "/api/auth/index.js"},
-        {"src": "/auth/google/callback", "dest": "/api/callback/index.js"},
-        {"src": "/logout", "dest": "/api/logout/index.js"}
-    ],
-    "env": {
-        "GOOGLE_ID": "@google_id",
-        "GOOGLE_SECRET": "@google_secret",
-        "KEY_1": "@key_1",
-        "KEY_2": "@key_2",
-        "URL_CALLBACK": "@url_callback"
-    }
+        {"src": "/auth/google", "dest": "/routes/auth/index.js"},
+        {"src": "/auth/google/redirect", "dest": "/routes/callback/index.js"},
+        {"src": "/logout", "dest": "/routes/logout/index.js"}
+    ]
 }
+	

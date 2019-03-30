@@ -15,15 +15,13 @@ const existingUser = req => {
 module.exports = withSession((req, res) => {
   const user = existingUser(req);
   if (user) {
-    const {
-      displayName,
-      image: { url }
-    } = JSON.parse(user);
+    const { displayName, url } = JSON.parse(user);
+    const urlHd = url.replace('s100', 's500');
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(
       baseTemplate(
         `<header style="text-align: center; font-family: sans-serif;">
-            <img style="border-radius: 50%;" src=${url} alt=${displayName} width=${100} height=${100}>
+            <img style="border-radius: 50%;" src=${urlHd} alt=${displayName} width=${100} height=${100}>
             <p>🎉Welcome back, <b>${displayName}</b>!!</p>
             <form action="/logout" method="post">
                 <button type="submit">Log Out</button>

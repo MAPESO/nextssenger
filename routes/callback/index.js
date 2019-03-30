@@ -14,18 +14,21 @@ const withSession = require('../../lib/middleware/session');
 // Utils
 const redirect = require('../../lib/utils/redirect');
 
-const plus = google.plus('v1');
+// Keys
+const { GOOGLE_ID, GOOGLE_SECRET, URL_CALLBACK } = require('../../keys');
+
 const { OAuth2 } = google.auth;
-const oauth2Client = new OAuth2(
-  process.env.GOOGLE_ID,
-  process.env.GOOGLE_SECRET,
-  process.env.URL_CALLBACK
-);
+const oauth2Client = new OAuth2(GOOGLE_ID, GOOGLE_SECRET, URL_CALLBACK);
+
+const { people } = google.people({
+  version: 'v1',
+  auth: oauth2Client
+});
 
 module.exports = withSession((req, res) => {
   const { query } = parse(req.url);
   const { code } = querystring.parse(query);
-  const user = getUser(oauth2Client, code, plus);
+  const user = getUser(oauth2Client, code, people);
   user
     .then(result => {
       req.session.user = JSON.stringify(result);

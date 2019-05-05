@@ -1,14 +1,26 @@
 {
     "version": 2,
+    "alias": "chat-auth.now.sh",
     "public": true,
     "builds": [
-        {"src": "index.js", "use": "@now/node"},
-        {"src": "routes/**/*.js", "use":"@now/node"}
+        { "src": "*.js", "use": "@now/node" },
+        { "src": "routes/**/*.js", "use":"@now/node" },
+        { "src": "*.css", "use": "@now/static" }
     ],
     "routes": [
-        {"src": "/auth/google", "dest": "/routes/auth/index.js"},
-        {"src": "/auth/google/redirect", "dest": "/routes/callback/index.js"},
-        {"src": "/logout", "dest": "/routes/logout/index.js"}
-    ]
+        { "src": "/auth/google", "dest": "/routes/auth/index.js" },
+        { "src": "/auth/google/redirect", "dest": "/routes/callback/index.js" },
+        { "src": "/logout", "dest": "/routes/logout/index.js" },
+        { "src": "/message/add", "dest": "/routes/message-add/index.js" },
+        { "src": "/messages", "dest": "/routes/messages/index.js" },
+        { "src": "/style.css", "dest": "/style.css" }
+    ],
+    "env": {
+        "GOOGLE_ID": "@google_id",
+        "GOOGLE_SECRET": "@google_secret",
+        "MONGODB_URI": "@mongodb_uri",
+        "URL_CALLBACK": "@url_callback",
+        "COOK_KEY_1": "@cook_key_1",
+        "COOK_KEY_2": "@cook_key_2"
+    }
 }
-	

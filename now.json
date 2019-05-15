@@ -1,26 +1,21 @@
 {
     "version": 2,
-    "alias": "chat-auth.now.sh",
-    "public": true,
+    "alias": "nextssenger.now.sh",
+    "regions": ["chs1"],
     "builds": [
-        { "src": "*.js", "use": "@now/node" },
-        { "src": "routes/**/*.js", "use":"@now/node" },
-        { "src": "*.css", "use": "@now/static" }
+        { "src": "backend/**/*.js", "use": "@now/node" },
+        { "src": "www/package.json", "use": "@now/next" }
     ],
     "routes": [
-        { "src": "/auth/google", "dest": "/routes/auth/index.js" },
-        { "src": "/auth/google/redirect", "dest": "/routes/callback/index.js" },
-        { "src": "/logout", "dest": "/routes/logout/index.js" },
-        { "src": "/message/add", "dest": "/routes/message-add/index.js" },
-        { "src": "/messages", "dest": "/routes/messages/index.js" },
-        { "src": "/style.css", "dest": "/style.css" }
+        { "src": "/auth", "dest": "/backend/auth/google/index.js" },
+        { "src": "/auth/google", "dest": "/backend/auth/google/cb.js" },
+        { "src": "/(.*)", "dest": "/www/$1" }
     ],
     "env": {
-        "GOOGLE_ID": "@google_id",
-        "GOOGLE_SECRET": "@google_secret",
-        "MONGODB_URI": "@mongodb_uri",
-        "URL_CALLBACK": "@url_callback",
-        "COOK_KEY_1": "@cook_key_1",
-        "COOK_KEY_2": "@cook_key_2"
+        "GOOGLE_CLIENT_ID": "@nextssenger-google-client-id",
+        "GOOGLE_CLIENT_SECRET": "@nextssenger-google-client-secret",
+        "MONGODB_ATLAS_URI": "@nextssenger-mongodb-atlas-uri",
+        "COOKIE_KEY_1": "@nextssenger-cookie-key-1",
+        "COOKIE_KEY_2": "@nextssenger-cookie-key-2"
     }
 }

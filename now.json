@@ -1,9 +1,6 @@
 {
     "version": 2,
     "alias": "nextssenger.now.sh",
-    "regions": [
-        "chs1"
-    ],
     "builds": [
         {
             "src": "backend/**/*.js",

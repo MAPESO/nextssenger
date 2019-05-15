@@ -1,15 +1,32 @@
 {
     "version": 2,
     "alias": "nextssenger.now.sh",
-    "regions": ["chs1"],
+    "regions": [
+        "chs1"
+    ],
     "builds": [
-        { "src": "backend/**/*.js", "use": "@now/node" },
-        { "src": "www/package.json", "use": "@now/next" }
+        {
+            "src": "backend/**/*.js",
+            "use": "@now/node"
+        },
+        {
+            "src": "www/package.json",
+            "use": "@now/next"
+        }
     ],
     "routes": [
-        { "src": "/auth", "dest": "/backend/auth/google/index.js" },
-        { "src": "/auth/google", "dest": "/backend/auth/google/cb.js" },
-        { "src": "/(.*)", "dest": "/www/$1" }
+        {
+            "src": "/auth",
+            "dest": "/backend/auth/google/index.js"
+        },
+        {
+            "src": "/auth/google",
+            "dest": "/backend/auth/google/cb.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/www/$1"
+        }
     ],
     "env": {
         "GOOGLE_CLIENT_ID": "@nextssenger-google-client-id",

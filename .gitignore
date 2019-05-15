@@ -1,6 +1,9 @@
 # dependencies
 node_modules/
 
+# buidl output
+www/.next
+
 # logs
 *.log
 .DS_Store

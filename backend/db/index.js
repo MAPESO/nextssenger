@@ -14,7 +14,7 @@ module.exports = async () => {
     return Promise.resolve(cachedDb);
   }
   console.log('> DB is connected');
-  const db = await mongoose.connect(process.env.MONGODB_URI, {
+  const db = await mongoose.connect(process.env.MONGODB_ATLAS_URI, {
     useNewUrlParser: true,
     ssl: true
   });

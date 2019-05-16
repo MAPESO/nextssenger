@@ -36,5 +36,5 @@ module.exports = async (req, res) => {
     domain: 'https://nextssenger.now.sh',
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30)
   });
-  redirect(res, 301, '/');
+  redirect(res, 303, '/');
 };

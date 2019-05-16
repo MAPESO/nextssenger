@@ -5,9 +5,9 @@ import Cookies from 'cookies';
 class Index extends Component {
     static async getInitialProps({ req, res }) {
         const cookies = new Cookies(req, res, { keys: [process.env.COOKIE_KEY_1, process.env.COOKIE_KEY_2] });
-        const isCookie = cookies.get('from-user-goole', { signed: true });
+        const isCookie = cookies.get('from-user-google', { signed: true });
         if(Object.is(isCookie, undefined)) {
-            res.writeHead(301, { Location: '/login' });
+            res.writeHead(303, { Location: '/login' });
             res.end();
         }
         return { isCookie }
@@ -16,7 +16,7 @@ class Index extends Component {
         const { displayName, url } = JSON.parse(this.props.isCookie);
         return (
             <Layout>
-                <h1>Welcome to Nextssenger {displayName} ! </h1>
+                <h1>Welcome to Nextssenger {displayName} !! </h1>
             </Layout>
         );
     }

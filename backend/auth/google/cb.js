@@ -33,7 +33,6 @@ module.exports = async (req, res) => {
   });
   cookies.set('from-user-google', JSON.stringify(user), {
     signed: true,
-    domain: 'https://nextssenger.now.sh',
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30)
   });
   redirect(res, 303, '/');

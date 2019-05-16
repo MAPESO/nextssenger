@@ -20,5 +20,5 @@ const authUrl = oauth2Client.generateAuthUrl({
 });
 
 module.exports = (req, res) => {
-  redirect(res, 301, authUrl);
+  redirect(res, 303, authUrl);
 };

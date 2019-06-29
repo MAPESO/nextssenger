@@ -1,10 +1,15 @@
+/* eslint new-cap: 0 */
+
 // Native
 const { parse } = require('url');
 
 // Packages
 const { google } = require('googleapis');
 const querystring = require('querystring');
+const ms = require('ms');
 const Cookies = require('cookies');
+const jwt = require('jsonwebtoken');
+const ChatKit = require('@pusher/chatkit-server');
 
 // Helpers
 const getUser = require('../../lib/helpers/getUser');
@@ -27,13 +32,20 @@ const { people } = google.people({
 module.exports = async (req, res) => {
   const { query } = parse(req.url);
   const { code } = querystring.parse(query);
-  const user = await getUser(oauth2Clietn, code, people);
+  const { displayName, id, url } = await getUser(oauth2Clietn, code, people);
+  const chatKit = new ChatKit.default({
+    key: process.env.CHATKIT_SECRET,
+    instanceLocator: process.env.CHATKIT_LOCATOR
+  });
   const cookies = new Cookies(req, res, {
     keys: [process.env.COOKIE_KEY_1, process.env.COOKIE_KEY_2]
   });
-  cookies.set('from-user-google', JSON.stringify(user), {
+  const token = jwt.sign({ displayName, url, id }, process.env.JWT_KEY);
+  cookies.set('from-user-google', token, {
     signed: true,
-    expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30)
+    expires: ms('1y'),
+    maxAge: ms('1y')
   });
+  await chatKit.createUser({ id, name: displayName, avatarURL: url });
   redirect(res, 303, '/');
 };

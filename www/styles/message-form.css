@@ -1,0 +1,16 @@
+.message-form {
+  border-top: 1px solid #ccc;
+}
+
+.message-form, .message-input {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+input[type="text"].message-input {
+  font-size: 1em;
+  outline: none;
+  height: 50px;
+  border: none;
+  padding-left: 20px;
+}

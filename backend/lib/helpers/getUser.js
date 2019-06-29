@@ -8,12 +8,15 @@ async function getUser(oauth2Client, code, people) {
       resourceName: 'people/me',
       personFields: 'emailAddresses,names,photos'
     });
+
     const { names, photos } = user.data;
     const { displayName } = names[0];
+    const { metadata } = names[0];
+    const { id } = metadata.source;
     const { url } = photos[0];
-
     return {
       displayName,
+      id,
       url
     };
   } catch (err) {

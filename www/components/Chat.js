@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
 import PropTypes from 'prop-types';
+import UUID from 'uuid-generate';
 
 // Components
 import { Layout } from './Layout';
@@ -17,16 +18,15 @@ class ChatApp extends Component {
     super(props);
 
     this.state = {
-      currentUser: null,
       roomUsers: [],
-      roomID: [],
-      messages: []
+      messageLocal: [],
+      isSend: false,
+      currentUser: null
     };
 
-    this.currentUser = null;
-    this.createRoom = this.createRoom.bind(this);
-    this.connectRoom = this.connectRoom.bind(this);
     this.sendDM = this.sendDM.bind(this);
+    this.removeLastItem = this.removeLastItem.bind(this);
+    this.currentUser = null;
   }
 
   componentDidMount() {
@@ -42,7 +42,14 @@ class ChatApp extends Component {
         this.setState({ currentUser });
         currentUser
           .subscribeToRoomMultipart({
-            roomId: '19439298'
+            roomId: '19439298',
+            hooks: {
+              onMessage: message => {
+                // brodcast a los clientes
+                console.log('New message');
+                console.log(message);
+              }
+            }
           })
           .then(room => {
             this.setState(state => ({
@@ -55,67 +62,50 @@ class ChatApp extends Component {
       });
   }
 
-  createRoom(user, index) {
-    const { roomID } = this.state;
-    if (!roomID[index]) {
-      this.currentUser
-        .createRoom({
-          name: user.name,
-          private: true,
-          addUserIds: [this.props.id, user.id]
-        })
-        .then(room => {
-          console.log(`Create room ${room.name} - ${room.id}`);
-          this.setState(state => ({
-            roomID: [...state.roomID, room.id]
-          }));
-          this.connectRoom();
-        })
-        .catch(err => {
-          throw new Error(`Problem create room: ${err}`);
-        });
-    }
-  }
-
-  connectRoom() {
-    this.state.roomID.map(id => {
-      this.currentUser.subscribeToRoomMultipart({
-        roomId: `${id}`,
-        hooks: {
-          onMessage: message => {
-            console.log('New message');
-            console.log(message);
-            this.setState({
-              messages: [...this.state.messages, message]
-            });
-          }
-        }
+  sendDM(text) {
+    this.currentUser
+      .sendSimpleMessage({
+        text,
+        roomId: '19439298'
+      })
+      .then(() => {
+        const messageSucces = { data: text, confirmedAt: UUID.generate() };
+        this.setState(state => ({
+          messageLocal: [...state.messageLocal, messageSucces]
+        }));
+      })
+      .catch(() => {
+        const failedMessage = { data: text, confirmedAt: null };
+        this.setState(state => ({
+          messageLocal: [...state.messageLocal, failedMessage]
+        }));
       });
-    });
   }
 
-  sendDM(text, id) {
-    console.log('envio de mensaje listo');
-    this.currentUser.sendSimpleMessage({
-      text,
-      roomId: `${id}`
-    });
+  removeLastItem() {
+    const { messageLocal } = this.state;
+    const removedItem = [...messageLocal];
+    removedItem.pop();
+    this.setState({ messageLocal: removedItem });
   }
 
   render() {
-    const { roomUsers, currentUser, messages, roomID } = this.state;
+    const { roomUsers, currentUser, messageLocal } = this.state;
+    console.log(messageLocal);
     return (
       <Layout>
         <Sidebar>
-          <UserList
-            roomUsers={roomUsers}
-            currentUser={currentUser}
-            handleRoom={this.createRoom}
-          />
+          <UserList roomUsers={roomUsers} currentUser={currentUser} />
         </Sidebar>
         <Screen>
-          <MessageList messages={messages} />
-          <MessageForm handleSend={this.sendDM} roomID={roomID} />
+          <MessageList
+            username={this.props.username}
+            messageLocal={messageLocal}
+          />
+          <MessageForm
+            sendDM={this.sendDM}
+            removeLastItem={this.removeLastItem}
+          />
         </Screen>
       </Layout>
     );

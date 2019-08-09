@@ -1,27 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../styles/message-list.css';
-
 function MessageList(props) {
-  const { messages } = props;
+  const { username, messageLocal } = props;
   return (
     <ul className="chat-messages">
-      {messages.map(message => {
-        const { payload } = message.parts[0];
-        const { content } = payload;
-        return (
-          <li className="message" key={message.id}>
-            {content} - {message.senderId}
-          </li>
-        );
-      })}
+      <p>
+        {username}:{' '}
+        {messageLocal.map((message, index) => {
+          if (message.confirmedAt !== null) {
+            return <span key={index}>{message.data}</span>;
+          } else {
+            return <span style={{ color: '#999999' }}>{message.data}</span>;
+          }
+        })}
+      </p>
+      <a href="/logout">logout</a>
+      <style jsx>{`
+        .chat-messages {
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          margin-bottom: 0;
+          min-height: min-content;
+        }
+
+        .message {
+          padding-left: 20px;
+          padding-right: 20px;
+          margin-bottom: 10px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .message {
+          display: inline;
+        }
+
+        .message .user-id {
+          font-weight: bold;
+        }
+      `}</style>
     </ul>
   );
 }
 
 MessageList.propTypes = {
-  messages: PropTypes.array.isRequired
+  username: PropTypes.string.isRequired,
+  messageLocal: PropTypes.array.isRequired
 };
 
 export { MessageList };

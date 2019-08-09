@@ -4,52 +4,38 @@ import PropTypes from 'prop-types';
 // Styles
 import '../styles/message-form.css';
 
-class MessageForm extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { inputMessage: '' };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    const { value } = event.target;
-    this.setState({ inputMessage: value });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    const { roomID, handleSend } = this.props;
-    const { inputMessage } = this.state;
-    roomID.map(room => {
-      handleSend(inputMessage, room);
-    });
-    this.setState({ inputMessage: '' });
-  }
-  render() {
-    return (
-      <footer className="chat-footer" onSubmit={this.handleSubmit}>
-        <form className="message-form">
-          <input
-            className="message-input"
-            required
-            autoComplete="off"
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.inputMessage}
-            placeholder="Type here..."
-          />
-        </form>
-      </footer>
-    );
-  }
+function MessageForm(props) {
+  const { sendDM, removeLastItem } = props;
+  const handlePress = event => {
+    const { key } = event;
+    sendDM(key);
+  };
+  const handlePressDown = event => {
+    const { keyCode } = event;
+    if (keyCode === 8) {
+      removeLastItem();
+    }
+  };
+  return (
+    <footer className="chat-footer">
+      <div className="message-form">
+        <input
+          className="message-input"
+          required
+          autoComplete="off"
+          type="text"
+          onKeyPress={handlePress}
+          onKeyDown={handlePressDown}
+          placeholder="Type heree...."
+        />
+      </div>
+    </footer>
+  );
 }
 
 MessageForm.propTypes = {
-  handleSend: PropTypes.func.isRequired,
-  roomID: PropTypes.array
+  sendDM: PropTypes.func.isRequired,
+  removeLastItem: PropTypes.func.isRequired
 };
 
 export { MessageForm };

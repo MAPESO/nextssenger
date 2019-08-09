@@ -37,15 +37,30 @@ module.exports = async (req, res) => {
     key: process.env.CHATKIT_SECRET,
     instanceLocator: process.env.CHATKIT_LOCATOR
   });
-  const cookies = new Cookies(req, res, {
-    keys: [process.env.COOKIE_KEY_1, process.env.COOKIE_KEY_2]
-  });
-  const token = jwt.sign({ displayName, url, id }, process.env.JWT_KEY);
-  cookies.set('from-user-google', token, {
-    signed: true,
-    expires: ms('1y'),
-    maxAge: ms('1y')
-  });
-  await chatKit.createUser({ id, name: displayName, avatarURL: url });
-  redirect(res, 303, '/');
+  const user = await chatKit.getUsersById({ userIds: id });
+  if (user.length) {
+    console.log('El usario existe');
+    const cookies = new Cookies(req, res, {
+      keys: [process.env.COOKIE_KEY_1, process.env.COOKIE_KEY_2]
+    });
+    const token = jwt.sign({ displayName, url, id }, process.env.JWT_KEY);
+    cookies.set('from-user-google', token, {
+      signed: true,
+      maxAge: ms('1y'),
+      expires: ms('1y')
+    });
+    redirect(res, 303, '/');
+  } else if (user.length === 0) {
+    const cookies = new Cookies(req, res, {
+      keys: [process.env.COOKIE_KEY_1, process.env.COOKIE_KEY_2]
+    });
+    const token = jwt.sign({ displayName, url, id }, process.env.JWT_KEY);
+    cookies.set('from-user-google', token, {
+      signed: true,
+      maxAge: ms('1y'),
+      expires: ms('1y')
+    });
+    await chatKit.createUser({ id, name: displayName, avatarURL: url });
+    redirect(res, 303, '/');
+  }
 };

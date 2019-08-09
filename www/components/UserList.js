@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import '../styles/user-list.css';
 
 function UserList(props) {
-  const { roomUsers, currentUser, handleRoom } = props;
+  const { roomUsers, currentUser } = props;
 
   // crea una nueva array que no incluira
   // el usario actual (currenteUser)
@@ -13,13 +13,9 @@ function UserList(props) {
     return currentUser.id !== user.id;
   });
 
-  const userList = sameID.map((user, index) => {
+  const userList = sameID.map(user => {
     return (
-      <li
-        className="user-profile"
-        key={user.id}
-        onClick={() => handleRoom(user, index)}
-      >
+      <li className="user-profile" key={user.id}>
         {user.name}
       </li>
     );
@@ -30,8 +26,7 @@ function UserList(props) {
 
 UserList.propTypes = {
   roomUsers: PropTypes.array.isRequired,
-  currentUser: PropTypes.object,
-  handleRoom: PropTypes.func.isRequired
+  currentUser: PropTypes.object
 };
 
 export { UserList };

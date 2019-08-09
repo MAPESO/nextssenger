@@ -21,6 +21,10 @@
             "dest": "/backend/auth/google/cb.js"
         },
         {
+            "src": "/logout",
+            "dest": "/backend/logout/index.js"
+        },
+        {
             "src": "/(.*)",
             "dest": "/www/$1"
         }

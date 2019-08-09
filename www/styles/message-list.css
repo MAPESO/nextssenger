@@ -16,9 +16,9 @@
   align-items: center;
 }
 
-.message span {
-  display: block;
-  text-align: left;
+.message {
+  display: inline;
+  color: #999999;
 }
 
 .message .user-id {

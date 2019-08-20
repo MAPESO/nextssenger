@@ -10,42 +10,12 @@
   },
   "license": "MIT",
   "private": false,
-  "eslintConfig": {
-    "parserOptions": {
-      "ecmaVersion": 10,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-    "env": {
-      "es6": true,
-      "node": true
-    },
-    "extends": [
-      "prettier",
-      "eslint:recommended",
-      "plugin:react/recommended"
-    ],
-    "plugins": [
-      "prettier",
-      "react"
-    ],
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true
-        }
-      ]
-    }
-  },
   "dependencies": {
     "@pusher/chatkit-client": "^1.11.0",
     "cookies": "^0.7.3",
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
-    "next": "^9.0.3",
+    "next": "^9.0.4",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -53,12 +23,12 @@
   },
   "devDependencies": {
     "@zeit/next-css": "^1.0.1",
-    "eslint": "6.1.0",
-    "eslint-config-prettier": "^6.0.0",
+    "eslint": "6.2.1",
+    "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
-    "husky": "^3.0.3",
-    "lint-staged": "^9.2.1",
+    "husky": "^3.0.4",
+    "lint-staged": "^9.2.3",
     "prettier": "^1.18.2"
   },
   "husky": {

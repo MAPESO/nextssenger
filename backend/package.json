@@ -10,32 +10,6 @@
   },
   "license": "MIT",
   "private": false,
-  "eslintConfig": {
-    "parserOptions": {
-      "ecmaVerion": 10,
-      "sourceType": "module"
-    },
-    "env": {
-      "node": true,
-      "es6": true
-    },
-    "extends": [
-      "airbnb",
-      "prettier"
-    ],
-    "plugins": [
-      "prettier"
-    ],
-    "rules": {
-      "no-shadow": 0,
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true
-        }
-      ]
-    }
-  },
   "dependencies": {
     "@pusher/chatkit-server": "^2.1.0",
     "cookies": "^0.7.3",
@@ -46,15 +20,15 @@
     "querystrings": "^0.4.0"
   },
   "devDependencies": {
-    "eslint": "6.1.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^6.0.0",
+    "eslint": "6.2.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.14.3",
-    "husky": "^3.0.3",
-    "lint-staged": "^9.2.1",
+    "husky": "^3.0.4",
+    "lint-staged": "^9.2.3",
     "prettier": "^1.18.2"
   },
   "husky": {

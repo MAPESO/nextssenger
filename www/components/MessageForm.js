@@ -5,15 +5,21 @@ import PropTypes from 'prop-types';
 import '../styles/message-form.css';
 
 function MessageForm(props) {
-  const { sendDM, removeLastItem } = props;
+  const { sendDM } = props;
   const handlePress = event => {
     const { key } = event;
-    sendDM(key);
+    if (key !== 'Enter') {
+      sendDM(key);
+    }
   };
   const handlePressDown = event => {
-    const { keyCode } = event;
-    if (keyCode === 8) {
-      removeLastItem();
+    const { key } = event;
+    if (key === 'Backspace') {
+      // eslint-disable-next-line no-undef
+      alert('Back Space');
+    } else if (key === 'Enter') {
+      // eslint-disable-next-line no-undef
+      alert('Enter');
     }
   };
   return (
@@ -34,8 +40,7 @@ function MessageForm(props) {
 }
 
 MessageForm.propTypes = {
-  sendDM: PropTypes.func.isRequired,
-  removeLastItem: PropTypes.func.isRequired
+  sendDM: PropTypes.func.isRequired
 };
 
 export { MessageForm };

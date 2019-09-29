@@ -3,14 +3,13 @@
 import React, { Component } from 'react';
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
 import PropTypes from 'prop-types';
-import UUID from 'uuid-generate';
+import tinytime from 'tinytime';
 
 // Components
 import { Layout } from './Layout';
 import { Sidebar } from './Sidebar';
-import { UserList } from './UserList';
 import { MessageForm } from './MessageForm';
-import { MessageList } from './MessageList';
+import { Messages } from './Message/Messages';
 import { Screen } from './Secreen';
 
 class ChatApp extends Component {
@@ -18,14 +17,10 @@ class ChatApp extends Component {
     super(props);
 
     this.state = {
-      roomUsers: [],
-      messageLocal: [],
-      isSend: false,
-      currentUser: null
+      messages: []
     };
 
     this.sendDM = this.sendDM.bind(this);
-    this.removeLastItem = this.removeLastItem.bind(this);
     this.currentUser = null;
   }
 
@@ -39,23 +34,30 @@ class ChatApp extends Component {
       .connect()
       .then(currentUser => {
         this.currentUser = currentUser;
-        this.setState({ currentUser });
-        currentUser
-          .subscribeToRoomMultipart({
-            roomId: '19439298',
-            hooks: {
-              onMessage: message => {
-                // brodcast a los clientes
-                console.log('New message');
-                console.log(message);
-              }
+        this.currentUser.subscribeToRoomMultipart({
+          roomId: '19439298',
+          hooks: {
+            onMessage: message => {
+              const { name } = message.sender;
+              const { id, parts, senderId } = message;
+              const template = tinytime('{h}:{mm}:{a}');
+              const {
+                payload: { content }
+              } = parts[0];
+              const messageDetails = {
+                name,
+                id,
+                senderId,
+                text: content,
+                date: template.render(new Date())
+              };
+              this.setState(state => ({
+                messages: state.messages.concat(messageDetails)
+              }));
             }
-          })
-          .then(room => {
-            this.setState(state => ({
-              roomUsers: [...state.roomUsers, ...room.users]
-            }));
-          });
+          },
+          messageLimit: 0
+        });
       })
       .catch(err => {
         throw new Error(`Error connect with chatkit: ${err}`);
@@ -69,43 +71,23 @@ class ChatApp extends Component {
         roomId: '19439298'
       })
       .then(() => {
-        const messageSucces = { data: text, confirmedAt: UUID.generate() };
-        this.setState(state => ({
-          messageLocal: [...state.messageLocal, messageSucces]
-        }));
+        console.log('mensaje se envio con exito !');
       })
-      .catch(() => {
-        const failedMessage = { data: text, confirmedAt: null };
-        this.setState(state => ({
-          messageLocal: [...state.messageLocal, failedMessage]
-        }));
+      .catch(err => {
+        console.log('problema al enviar el mensaje');
+        throw new Error(err);
       });
   }
 
-  removeLastItem() {
-    const { messageLocal } = this.state;
-    const removedItem = [...messageLocal];
-    removedItem.pop();
-    this.setState({ messageLocal: removedItem });
-  }
-
   render() {
-    const { roomUsers, currentUser, messageLocal } = this.state;
-    console.log(messageLocal);
+    const { messages } = this.state;
+    console.log(messages);
     return (
       <Layout>
-        <Sidebar>
-          <UserList roomUsers={roomUsers} currentUser={currentUser} />
-        </Sidebar>
+        <Sidebar />
         <Screen>
-          <MessageList
-            username={this.props.username}
-            messageLocal={messageLocal}
-          />
-          <MessageForm
-            sendDM={this.sendDM}
-            removeLastItem={this.removeLastItem}
-          />
+          <Messages messages={messages} id={this.props.id} />
+          <MessageForm sendDM={this.sendDM} />
         </Screen>
       </Layout>
     );
@@ -113,8 +95,6 @@ class ChatApp extends Component {
 }
 
 ChatApp.propTypes = {
-  username: PropTypes.string.isRequired,
-  photo: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired
 };
 

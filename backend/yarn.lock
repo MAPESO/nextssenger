@@ -46,10 +46,10 @@
     "@nodelib/fs.scandir" "2.1.1"
     fastq "^1.6.0"
 
-"@pusher/chatkit-server@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@pusher/chatkit-server/-/chatkit-server-2.1.0.tgz#72de545a23156e7f715d7cb99208d4070d7ba724"
-  integrity sha512-6jUkAYLGridtRwohl63LtKWA+1+npCV3KGFsa0yvXjz3tSyBcwYDDf+5HUFZatAMrDmYzAleDQr+qLQyrlOcWg==
+"@pusher/chatkit-server@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@pusher/chatkit-server/-/chatkit-server-2.1.1.tgz#5b6888827c7e2ba2a06b1fc5558fcdf74d0a9c5d"
+  integrity sha512-Q8dVrZfUYayaBHR/OYOrqndPcBQPJWIkKlsHIvKJrs1whl/XTvQdYqSg7XEUQomO/9UTeslhDgdZ7HBvAbpzzQ==
   dependencies:
     "@pusher/platform-node" "~0.15.0"
     "@types/got" "^9.4.0"
@@ -753,10 +753,10 @@ eslint-config-airbnb@^18.0.1:
     object.assign "^4.1.0"
     object.entries "^1.1.0"
 
-eslint-config-prettier@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.1.0.tgz#e6f678ba367fbd1273998d5510f76f004e9dce7b"
-  integrity sha512-k9fny9sPjIBQ2ftFTesJV21Rg4R/7a7t7LCtZVrYQiHEp8Nnuk3EGaDmsKSAnsPj0BYcgB2zxzHa2NTkIxcOLg==
+eslint-config-prettier@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.3.0.tgz#e73b48e59dc49d950843f3eb96d519e2248286a3"
+  integrity sha512-EWaGjlDAZRzVFveh2Jsglcere2KK5CJBhkNSa1xs3KfMUGdRiT7lG089eqPdvlzWHpAqaekubOsOMu8W8Yk71A==
   dependencies:
     get-stdin "^6.0.0"
 
@@ -808,10 +808,10 @@ eslint-plugin-jsx-a11y@^6.2.1:
     has "^1.0.3"
     jsx-ast-utils "^2.2.1"
 
-eslint-plugin-prettier@^3.0.1:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.1.0.tgz#8695188f95daa93b0dc54b249347ca3b79c4686d"
-  integrity sha512-XWX2yVuwVNLOUhQijAkXz+rMPPoCr7WFiAl8ig6I7Xn+pPVhDhzg4DxHpmbeb0iqjO9UronEA3Tb09ChnFVHHA==
+eslint-plugin-prettier@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.1.1.tgz#507b8562410d02a03f0ddc949c616f877852f2ba"
+  integrity sha512-A+TZuHZ0KU0cnn56/9mfR7/KjUJ9QNVXUhwvRFSR7PGPe0zQR6PTkmyqg1AtUUEOzTqeRsUwyKFh0oVZKVCrtA==
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
@@ -855,10 +855,10 @@ eslint-visitor-keys@^1.1.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.1.0.tgz#e2a82cea84ff246ad6fb57f9bde5b46621459ec2"
   integrity sha512-8y9YjtM1JBJU/A9Kc+SbaOV4y29sSWckBwMHa+FGtVj5gN/sbnKDf6xJUl+8g7FAij9LVaP8C24DUiH/f/2Z9A==
 
-eslint@6.2.2:
-  version "6.2.2"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-6.2.2.tgz#03298280e7750d81fcd31431f3d333e43d93f24f"
-  integrity sha512-mf0elOkxHbdyGX1IJEUsNBzCDdyoUgljF3rRlgfyYh0pwGnreLc0jjD6ZuleOibjmnUWZLY2eXwSooeOgGJ2jw==
+eslint@6.5.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-6.5.0.tgz#304623eec903969dd5c9f2d61c6ce3d6ecec8750"
+  integrity sha512-IIbSW+vKOqMatPmS9ayyku4tvWxHY2iricSRtOz6+ZA5IPRlgXzEL0u/j6dr4eha0ugmhMwDTqxtmNu3kj9O4w==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.10.0"
@@ -1216,17 +1216,17 @@ globby@^10.0.0:
     merge2 "^1.2.3"
     slash "^3.0.0"
 
-google-auth-library@^5.1.0:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/google-auth-library/-/google-auth-library-5.1.1.tgz#d1b57f47d49f909ad10032e946d07e3b4142ca42"
-  integrity sha512-Au/lHG0Nvafprs8O66xu9qzfj/uEXWR+jmrhE2zHd9rh7mA+4b5H21rMP3xgQwmHXZHOOVN1GEuCEwlUut3gvg==
+google-auth-library@^5.2.0:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/google-auth-library/-/google-auth-library-5.2.1.tgz#3df7cb4186a24355184551837b24012cb1b31013"
+  integrity sha512-p9vO6UcRIK/zD3PxoMijaUfFYu6tvzaQwvag1K/82O42NBeAnmllyQUgqaBhcAh9FzFAVlN4bQIaO8+prpE7Vg==
   dependencies:
     arrify "^2.0.0"
     base64-js "^1.3.0"
     fast-text-encoding "^1.0.0"
     gaxios "^2.0.0"
     gcp-metadata "^2.0.0"
-    gtoken "^3.0.0"
+    gtoken "^4.0.0"
     jws "^3.1.5"
     lru-cache "^5.0.0"
 
@@ -1237,25 +1237,25 @@ google-p12-pem@^2.0.0:
   dependencies:
     node-forge "^0.8.0"
 
-googleapis-common@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/googleapis-common/-/googleapis-common-3.0.0.tgz#da8ce5e5e0d37968132653224e578ab67a3b2670"
-  integrity sha512-M2SanEEgC0TiULNjH2jVROoMxM+0eCqRV4NhmIjaGhSwzgq7my47iq/m+yDVT4A1g4UpkbNX/6yt90zsJqmnlw==
+googleapis-common@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/googleapis-common/-/googleapis-common-3.1.0.tgz#592dbf4e1fa543090b2671a524dcdb09184ec15c"
+  integrity sha512-abnogPoWqv0cU6O/EFpkerCVsaUsKEG6XpCm4P1YgK44PxIRcGtalDwijqUErkcivM1Xy5MNyf1PDkKTLEjOZA==
   dependencies:
     extend "^3.0.2"
     gaxios "^2.0.1"
-    google-auth-library "^5.1.0"
+    google-auth-library "^5.2.0"
     qs "^6.7.0"
     url-template "^2.0.8"
     uuid "^3.3.2"
 
-googleapis@42.0.0:
-  version "42.0.0"
-  resolved "https://registry.yarnpkg.com/googleapis/-/googleapis-42.0.0.tgz#17de1fc4494a49bc120152e6df87b8eca9a6bf0d"
-  integrity sha512-nQiKPDmzmMusnU8UOibmlC6hsgkm70SjqmLxSlBBb7i0z7/J6UPilSzo9tAMoHA8u3BUw3OXn13+p9YLmBH6Gg==
+googleapis@43.0.0:
+  version "43.0.0"
+  resolved "https://registry.yarnpkg.com/googleapis/-/googleapis-43.0.0.tgz#fcb1408fd1bd3f74eb9c4ca2b14ac7765ee0e50e"
+  integrity sha512-4b38mlTdDCA3KiyRTQmfPpeTxznC5ufgqx3AvKaEIoVm+iWeVLfwYs++/+OcGJJriH9bcs0gPbU7CR8DU6Oevg==
   dependencies:
-    google-auth-library "^5.1.0"
-    googleapis-common "^3.0.0"
+    google-auth-library "^5.2.0"
+    googleapis-common "^3.1.0"
 
 got@^9.6.0:
   version "9.6.0"
@@ -1279,10 +1279,10 @@ graceful-fs@^4.1.2:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
   integrity sha512-6uHUhOPEBgQ24HM+r6b/QwWfZq+yiFcipKFrOFiBEnWdy5sdzYoi+pJeQaPI5qOLRFqWmAXUPQNsielzdLoecA==
 
-gtoken@^3.0.0:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/gtoken/-/gtoken-3.0.2.tgz#09b3c2998a785f81d7d020b9221d65d27e0e8e62"
-  integrity sha512-BOBi6Zz31JfxhSHRZBIDdbwIbOPyux10WxJHdx8wz/FMP1zyN1xFrsAWsgcLe5ww5v/OZu/MePUEZAjgJXSauA==
+gtoken@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/gtoken/-/gtoken-4.0.0.tgz#42b63a935a03a61eedf0ec14f74f6875bad627bd"
+  integrity sha512-XaRCfHJxhj06LmnWNBzVTAr85NfAErq0W1oabkdqwbq3uL/QTB1kyvGog361Uu2FMG/8e3115sIy/97Rnd4GjQ==
   dependencies:
     gaxios "^2.0.0"
     google-p12-pem "^2.0.0"
@@ -1353,10 +1353,10 @@ https-proxy-agent@^2.2.1:
     agent-base "^4.1.0"
     debug "^3.1.0"
 
-husky@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-3.0.4.tgz#10a48ac11ab50859b0939750fa0b4e07ad0bf669"
-  integrity sha512-7Rnt8aJfy+MlV28snmYK7O7vWwtOfeVxV6KhLpUFXlmx5ukQ1nQmNUB7QsAwSgdySB5X+bm7q7JIRgazqBUzKA==
+husky@^3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-3.0.7.tgz#05e869006c7d9a31b27893aeda520e730bd125b9"
+  integrity sha512-fIrkaREoQk6DO8KnSX16Aq7Kg9SxqYYQZH/9b+4AxXyXNNgpJLsc8lWlQCShLus1nbujIyZ/WQZBHGwClohK/w==
   dependencies:
     chalk "^2.4.2"
     cosmiconfig "^5.2.1"
@@ -1724,10 +1724,10 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-lint-staged@^9.2.4:
-  version "9.2.4"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-9.2.4.tgz#7a35839c9c6103ec98eabf43e35657c209509345"
-  integrity sha512-RAt5ogbLRiKy9+T3dKbbPKP6tN2I9VjEtTXQFxdkauUdMjIBsS70ikwwSgsBR8xVVCUSX7sVDyWCyem5xB8YDw==
+lint-staged@^9.4.0:
+  version "9.4.0"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-9.4.0.tgz#dd4abcc9a82539fd290aed1584e3241b8f8af687"
+  integrity sha512-jTu1KoGiGTSffM539wK+3igVqDGVsby3KwDBaXL471YndahkjnavLX+R5Nsk49JwklyMo0ZAXay1BaoyA6d2Jw==
   dependencies:
     chalk "^2.4.2"
     commander "^2.20.0"
@@ -1900,11 +1900,6 @@ lru-cache@^5.0.0:
   dependencies:
     yallist "^3.0.2"
 
-memory-pager@^1.0.2:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/memory-pager/-/memory-pager-1.5.0.tgz#d8751655d22d384682741c972f2c3d6dfa3e66b5"
-  integrity sha512-ZS4Bp4r/Zoeq6+NLJpP+0Zzm0pR8whtGPf1XExKLJBAczGMnSi3It14OiNCStjQjM6NU1okjQGSxgEZN8eBYKg==
-
 merge-stream@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/merge-stream/-/merge-stream-2.0.0.tgz#52823629a14dd00c9770fb6ad47dc6310f2c1f60"
@@ -1974,23 +1969,13 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
-mongodb-core@3.2.7:
-  version "3.2.7"
-  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-3.2.7.tgz#a8ef1fe764a192c979252dacbc600dc88d77e28f"
-  integrity sha512-WypKdLxFNPOH/Jy6i9z47IjG2wIldA54iDZBmHMINcgKOUcWJh8og+Wix76oGd7EyYkHJKssQ2FAOw5Su/n4XQ==
+mongodb@3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.3.2.tgz#ff086b5f552cf07e24ce098694210f3d42d668b2"
+  integrity sha512-fqJt3iywelk4yKu/lfwQg163Bjpo5zDKhXiohycvon4iQHbrfflSAz9AIlRE6496Pm/dQKQK5bMigdVo2s6gBg==
   dependencies:
     bson "^1.1.1"
     require_optional "^1.0.1"
-    safe-buffer "^5.1.2"
-  optionalDependencies:
-    saslprep "^1.0.0"
-
-mongodb@3.2.7:
-  version "3.2.7"
-  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.2.7.tgz#8ba149e4be708257cad0dea72aebb2bbb311a7ac"
-  integrity sha512-2YdWrdf1PJgxcCrT1tWoL6nHuk6hCxhddAAaEh8QJL231ci4+P9FLyqopbTm2Z2sAU6mhCri+wd9r1hOcHdoMw==
-  dependencies:
-    mongodb-core "3.2.7"
     safe-buffer "^5.1.2"
 
 mongoose-legacy-pluralize@1.0.2:
@@ -1998,16 +1983,15 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@5.6.11:
-  version "5.6.11"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.6.11.tgz#c63f557b702a02be8e20ec21d8f7776bdb9bd2d8"
-  integrity sha512-+Mxfmu2Jcspmdqk1111BLUj5mzSLHWKVovImkjzO9GMymTwkHshsuSFmUN7ou4dWy2WR8DPSJcwU52HhnnNk8Q==
+mongoose@5.7.1:
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.7.1.tgz#47f8feb3d28e9caf645859e4245a933b39c1797b"
+  integrity sha512-TJeZHb5h8UGH++ctngh2shgZuZmR9o0D8elxfkWzIpKB6QAFsJPmALtDuD6RYZTS33+CifhDdAMGqs3OpJ3cyQ==
   dependencies:
     async "2.6.2"
     bson "~1.1.1"
     kareem "2.3.1"
-    mongodb "3.2.7"
-    mongodb-core "3.2.7"
+    mongodb "3.3.2"
     mongoose-legacy-pluralize "1.0.2"
     mpath "0.6.0"
     mquery "3.2.1"
@@ -2634,13 +2618,6 @@ safe-buffer@5.1.2, safe-buffer@^5.0.1, safe-buffer@^5.1.2:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-saslprep@^1.0.0:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/saslprep/-/saslprep-1.0.3.tgz#4c02f946b56cf54297e347ba1093e7acac4cf226"
-  integrity sha512-/MY/PEMbk2SuY5sScONwhUDsV2p77Znkb/q3nSVstq/yQzYJOH/Azh29p9oJLsl3LnQwSvZDKagDGBsBwSooag==
-  dependencies:
-    sparse-bitfield "^3.0.3"
-
 semver-compare@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/semver-compare/-/semver-compare-1.0.0.tgz#0dee216a1c941ab37e9efb1788f6afc5ff5537fc"
@@ -2701,13 +2678,6 @@ sliced@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/sliced/-/sliced-1.0.1.tgz#0b3a662b5d04c3177b1926bea82b03f837a2ef41"
   integrity sha1-CzpmK10Ewxd7GSa+qCsD+Dei70E=
-
-sparse-bitfield@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/sparse-bitfield/-/sparse-bitfield-3.0.3.tgz#ff4ae6e68656056ba4b3e792ab3334d38273ca11"
-  integrity sha1-/0rm5oZWBWuks+eSqzM004JzyhE=
-  dependencies:
-    memory-pager "^1.0.2"
 
 spdx-correct@^3.0.0:
   version "3.1.0"

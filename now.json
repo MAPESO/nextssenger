@@ -26,7 +26,8 @@
         },
         {
             "src": "/(.*)",
-            "dest": "/www/$1"
+            "dest": "/www/$1",
+            "continue": true
         }
     ],
     "build": {

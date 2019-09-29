@@ -1,25 +1,24 @@
 // Packages
 import React from 'react';
 import PropTypes from 'prop-types';
-import jwt from 'jsonwebtoken';
-import Cookies from 'cookies';
 
 // Componentes
 import { Layout } from '../components/Layout';
 import { ChatApp } from '../components/Chat';
 
 function Index(props) {
-  const { displayName, id, url } = props.dataGoogle;
+  const { id } = props.dataGoogle;
   return (
     <Layout>
-      <ChatApp username={displayName} photo={url} id={id} />
+      <ChatApp id={id} />
     </Layout>
   );
 }
 
 Index.getInitialProps = async ({ req, res }) => {
-  const isServer = typeof window === 'undefined';
-  if (isServer) {
+  if (typeof window === 'undefined') {
+    const Cookies = require('cookies');
+    const jwt = require('jsonwebtoken');
     const cookies = new Cookies(req, res, {
       keys: [process.env.COOKIE_KEY_1, process.env.COOKIE_KEY_2]
     });

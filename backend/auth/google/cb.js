@@ -39,7 +39,7 @@ module.exports = async (req, res) => {
   });
   const user = await chatKit.getUsersById({ userIds: id });
   if (user.length) {
-    console.log('El usario existe');
+    // el usuario existe
     const cookies = new Cookies(req, res, {
       keys: [process.env.COOKIE_KEY_1, process.env.COOKIE_KEY_2]
     });
@@ -51,6 +51,7 @@ module.exports = async (req, res) => {
     });
     redirect(res, 303, '/');
   } else if (user.length === 0) {
+    // el usario no existe
     const cookies = new Cookies(req, res, {
       keys: [process.env.COOKIE_KEY_1, process.env.COOKIE_KEY_2]
     });

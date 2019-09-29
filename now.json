@@ -21,15 +21,31 @@
             "dest": "/backend/auth/google/cb.js"
         },
         {
+            "src": "/logout",
+            "dest": "/backend/logout/index.js"
+        },
+        {
             "src": "/(.*)",
             "dest": "/www/$1"
         }
     ],
+    "build": {
+        "env": {
+            "COOKIE_KEY_1": "@nextssenger-cookie-key-1",
+            "COOKIE_KEY_2": "@nextssenger-cookie-key-2",
+            "CHATKIT_LOCATOR": "@nextssenger-chatkit-locator",
+            "CHATKIT_TOKEN": "@nextssenger-chatkit-token",
+            "JWT_KEY": "@nextssenger-jwt-key"
+        }
+    },
     "env": {
         "GOOGLE_CLIENT_ID": "@nextssenger-google-client-id",
         "GOOGLE_CLIENT_SECRET": "@nextssenger-google-client-secret",
-        "MONGODB_ATLAS_URI": "@nextssenger-mongodb-atlas-uri",
         "COOKIE_KEY_1": "@nextssenger-cookie-key-1",
-        "COOKIE_KEY_2": "@nextssenger-cookie-key-2"
+        "COOKIE_KEY_2": "@nextssenger-cookie-key-2",
+        "CHATKIT_SECRET": "@nextssenger-chatkit-secret",
+        "CHATKIT_LOCATOR": "@nextssenger-chatkit-locator",
+        "CHATKIT_TOKEN": "@nextssenger-chatkit-token",
+        "JWT_KEY": "@nextssenger-jwt-key"
     }
 }

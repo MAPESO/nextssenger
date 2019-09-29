@@ -1,12 +1,14 @@
 import React from 'react';
-import Layout from '../components/Layout';
+import Link from 'next/link';
 
 function Login() {
-    return (
-        <Layout>
-            <a href="/auth">SIG IN WITH GOOGLE</a>
-        </Layout>
-    )
+  return (
+    <div>
+      <Link href="/auth">
+        <a>SIG IN WITH GOOGLE</a>
+      </Link>
+    </div>
+  );
 }
 
 export default Login;

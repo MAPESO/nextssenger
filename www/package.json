@@ -1,18 +1,49 @@
 {
   "name": "www",
   "version": "1.0.0",
-  "description": "frontend",
+  "description": "frontend from nextssenger",
   "main": "index.js",
-  "author": "Markoz Peña",
+  "author": {
+    "name": "Markoz Peña Mendez",
+    "email": "markdrew53@gmail.com",
+    "twitter": "@markdrew53"
+  },
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "@pusher/chatkit-client": "^1.13.1",
     "cookies": "^0.7.3",
-    "next": "^8.1.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "jsonwebtoken": "^8.5.1",
+    "next": "^9.0.7",
+    "prop-types": "^15.7.2",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
+    "tinytime": "^0.2.6"
+  },
+  "devDependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "eslint": "6.5.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.1.1",
+    "husky": "^3.0.7",
+    "lint-staged": "^9.4.0",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "scripts": {
+    "test": "eslint .",
     "now-dev": "now dev -p 8080",
     "dev": "next dev -p $PORT",
     "build": "next build",
